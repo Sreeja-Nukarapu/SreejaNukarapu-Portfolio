@@ -60,7 +60,7 @@ function Hero({ pageInfo }: Props) {
         className="text-4xl lg:text-5xl font-bold italic text-black py-2"
         style={{ fontFamily: "Georgia, serif" }}
       >
-        Hi, I'm {pageInfo?.name || "Sreeja Nukarapu"}
+        Hi, I&apos;m {pageInfo?.name || "Sreeja Nukarapu"}
       </motion.h1>
 
       {/* Typewriter role */}
