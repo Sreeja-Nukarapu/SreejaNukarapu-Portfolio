@@ -33,9 +33,19 @@ export default function Home({
     <div className="bg-white text-black h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scroll-smooth scrollbar-none">
       <Head>
         <title>Sreeja Nukarapu - Machine Learning Engineer</title>
-        <meta name="description" content="Sreeja Nukarapu - Machine Learning Engineer & Data Analyst" key="desc" />
-        <meta property="og:title" content="Sreeja Nukarapu - Machine Learning Engineer" />
-        <meta property="og:description" content="Machine Learning Engineer & Data Analyst" />
+        <meta
+          name="description"
+          content="Sreeja Nukarapu - Machine Learning Engineer & Data Analyst"
+          key="desc"
+        />
+        <meta
+          property="og:title"
+          content="Sreeja Nukarapu - Machine Learning Engineer"
+        />
+        <meta
+          property="og:description"
+          content="Machine Learning Engineer & Data Analyst"
+        />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Sreeja Nukarapu" />
       </Head>
