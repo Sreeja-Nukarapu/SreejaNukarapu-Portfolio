@@ -1,8 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Skill } from "../typings";
-import Image from "next/image";
-import { urlFor } from "../sanity";
 
 type Props = {
   directionBottom?: boolean;
@@ -12,19 +10,15 @@ type Props = {
 function Skill({ skill, directionBottom }: Props) {
   return (
     <motion.div
-      initial={{ y: directionBottom ? 200 : -200, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1.5 }}
-      className="flex gap-3 items-center"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.15, backgroundColor: "#000000" }}
+      className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 cursor-pointer"
     >
-      <Image
-        className="h-10 w-10 inline-flex"
-        src={urlFor(skill?.image).url()}
-        width={32}
-        height={32}
-        alt={skill?.title}
-      />
-      <span className="hidden md:block text-white text-lg">{skill?.title}</span>
+      <motion.span whileHover={{ color: "#ffffff" }} transition={{ duration: 0.2 }}>
+        {skill?.title}
+      </motion.span>
     </motion.div>
   );
 }

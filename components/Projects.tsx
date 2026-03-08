@@ -10,78 +10,98 @@ type Props = {
 };
 
 function Projects({ projects }: Props) {
+  if (!projects || projects.length === 0) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="min-h-screen flex flex-col justify-center mx-auto items-center"
+      >
+        <h3 className="text-3xl font-bold text-black">Projects</h3>
+        <p className="text-gray-400 mt-4">Projects coming soon...</p>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
-      className="h-screen relative flex overflow-hidden flex-col md:flex-row max-w-full justify-evenly mx-auto items-center z-0"
+      transition={{ duration: 1.5 }}
+      className="relative flex flex-col min-h-screen justify-start mx-auto items-center px-6 md:px-20 py-24 max-w-4xl"
     >
-      <div className="flex absolute top-20 gap-4">
-        <Image
-          src="https://s1.ax1x.com/2023/01/01/pSCbjMQ.png"
-          width={32}
-          height={32}
-          alt="Projects"
-          className="inline-flex h-8"
-        />
-        <h3 className="uppercase tracking-[15px] text-gray-400 text-2xl font-semibold">
-          Projects
-        </h3>
-      </div>
+      {/* Title */}
+      <h3 className="text-3xl font-bold text-black tracking-wide mb-12">
+        My Projects
+      </h3>
 
-      <div className="relative w-full flex overflow-x-scroll overflow-y-scroll snap-x snap-mandatory z-20 max-h-[60%] md:max-h-full md:overflow-y-hidden scrollbar scrollbar-thumb-rounded scrollbar-thumb-gray-400/40 hover:scrollbar-thumb-gray-400/70">
-        {projects.map((project, i) => (
-          <div
-            key={i}
-            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center md:h-screen scale-90 md:scale-100"
-          >
-            <Link href={`${project?.linksToBuild}`} target="_blank">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 2 }}
-                viewport={{ once: true }}
-              >
-                <Image
-                  src={urlFor(project?.image).url()}
-                  alt={project?.title}
-                  width={720}
-                  height={480}
-                  className="hover:scale-110 transition-all duration-500 rounded-lg w-96"
-                />
-              </motion.div>
-            </Link>
+      {/* Projects list */}
+      <div className="flex flex-col gap-8 w-full">
+        {projects.map((project, i) => {
+          const projectImageUrl = project?.image
+            ? urlFor(project.image).url()
+            : null;
 
-            <div className="space-t-10 px-0 md:px-10 max-w-5xl">
-              <h4 className="text-lg md:text-2xl font-semibold text-center">
-                <span className="underline decoration-[#F7AB0A]">
-                  {i + 1} of {projects.length}:
-                </span>{" "}
-                {project?.title}
-              </h4>
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <div className="flex flex-col md:flex-row gap-6">
+                {/* Project Image */}
+                {projectImageUrl && (
+                  <div className="flex-shrink-0">
+                    <Image
+                      src={projectImageUrl}
+                      alt={project?.title || "Project"}
+                      width={200}
+                      height={120}
+                      className="rounded-lg object-cover w-full md:w-48"
+                    />
+                  </div>
+                )}
 
-              <div className="flex items-center space-x-5 justify-center py-4">
-                {project?.technologies.map((technology) => (
-                  <Image
-                    src={urlFor(technology?.image).url()}
-                    alt={technology?.title}
-                    key={technology?._id}
-                    width={28}
-                    height={28}
-                  />
-                ))}
+                {/* Project Info */}
+                <div className="flex flex-col justify-between flex-1">
+                  <div>
+                    <h4 className="text-xl font-bold text-black mb-2">
+                      {project?.title}
+                    </h4>
+                    <p className="text-gray-500 text-sm mb-4">
+                      {project?.summary}
+                    </p>
+
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project?.technologies?.map((tech) => (
+                        <span
+                          key={tech._id}
+                          className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium"
+                        >
+                          {tech.title}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Link */}
+                  {project?.linksToBuild && (
+                    <Link href={project.linksToBuild} target="_blank">
+                      <button className="flex items-center gap-2 text-sm font-semibold text-black border border-black px-4 py-2 rounded-full hover:bg-black hover:text-white transition-all duration-300 w-fit">
+                        View Project →
+                      </button>
+                    </Link>
+                  )}
+                </div>
               </div>
-
-              <p className="text-base text-center md:text-left pb-3 max-w-4xl hidden md:block">
-                {project?.summary}
-              </p>
-            </div>
-          </div>
-        ))}
+            </motion.div>
+          );
+        })}
       </div>
-
-      <div className="w-full absolute top-[30%] bg-slate-50/10 left-0 h-[350px] -skew-y-12"></div>
     </motion.div>
   );
 }

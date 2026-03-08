@@ -1,12 +1,10 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import WorkExperience from "../components/WorkExperience";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
-import Contact from "../components/Contact";
 import BackToTop from "../components/BackToTop";
 import { GetStaticProps } from "next";
 import { Experience, PageInfo, Project, Skill, Social } from "../typings";
@@ -15,8 +13,6 @@ import { fetchExperience } from "../utils/fetchExperiences";
 import { fetchSkills } from "../utils/fetchSkills";
 import { fetchProjects } from "../utils/fetchProjects";
 import { fetchSocials } from "../utils/fetchSocials";
-import Image from "next/image";
-import background from "../public/background.jpeg";
 
 type Props = {
   pageInfo: PageInfo;
@@ -26,8 +22,6 @@ type Props = {
   socials: Social[];
 };
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home({
   pageInfo,
   experience,
@@ -36,49 +30,26 @@ export default function Home({
   socials,
 }: Props) {
   return (
-    <div className="text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scroll-smooth scrollbar-none">
+    <div className="bg-white text-black h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scroll-smooth scrollbar-none">
       <Head>
-        <title>Mingkai Pang - Software Developer</title>
-        <meta
-          name="description"
-          content="Coding for humans. Come say hi 🌳"
-          key="desc"
-        />
-        <meta property="og:url" content="https://mkpang.space/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Mingkai Pang - Software Developer" />
-        <meta
-          property="og:description"
-          content="Hi! I'm Mingkai Pang, a software developer based in Blacksburg, student and avid open-sourcerer. I'm passionate about building software that makes a difference in people's lives."
-        />
-        <meta
-          property="og:image"
-          content="https://s1.ax1x.com/2023/01/03/pSiu1uF.jpg"
-        />
+        <title>Sreeja Nukarapu - Machine Learning Engineer</title>
+        <meta name="description" content="Sreeja Nukarapu - Machine Learning Engineer & Data Analyst" key="desc" />
+        <meta property="og:title" content="Sreeja Nukarapu - Machine Learning Engineer" />
+        <meta property="og:description" content="Machine Learning Engineer & Data Analyst" />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="Mingkai Pang" />
+        <meta property="og:site_name" content="Sreeja Nukarapu" />
       </Head>
 
+      {/* White background */}
       <div
         style={{
           position: "fixed",
           height: "100vh",
           width: "100vw",
-          overflow: "hidden",
+          backgroundColor: "#ffffff",
+          zIndex: -1,
         }}
-      >
-        <Image
-          className="bg-cover bg-center"
-          alt="Background"
-          src={background}
-          fill
-          sizes="100vw"
-          style={{
-            objectFit: "cover",
-          }}
-          priority
-        />
-      </div>
+      />
 
       <Header socials={socials} pageInfo={pageInfo} />
 
@@ -100,10 +71,6 @@ export default function Home({
 
       <section id="projects" className="snap-start">
         <Projects projects={projects} />
-      </section>
-
-      <section id="contact" className="snap-start">
-        <Contact />
       </section>
 
       <footer>

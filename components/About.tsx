@@ -10,12 +10,15 @@ type Props = {
 };
 
 function About({ pageInfo }: Props) {
-  // use typewriter for background information
   const [text, count] = useTypewriter({
-    words: [`${pageInfo?.backgroundInformation}`],
+    words: [`${pageInfo?.backgroundInformation || "More about me coming soon..."}`],
     loop: 1,
     typeSpeed: 40,
   });
+
+  const profilePicUrl = pageInfo?.profilePic
+    ? urlFor(pageInfo.profilePic).url()
+    : null;
 
   return (
     <motion.div
@@ -42,13 +45,21 @@ function About({ pageInfo }: Props) {
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
       >
-        <Image
-          src={urlFor(pageInfo?.profilePic).url()}
-          alt="Profile picture"
-          width={200}
-          height={200}
-          className="flex-shrink-0 w-24 h-24 object-cover md:w-48 md:h-48 mt-10 mb-5"
-        />
+        {profilePicUrl ? (
+          <Image
+            src={profilePicUrl}
+            alt="Profile picture"
+            width={200}
+            height={200}
+            className="flex-shrink-0 w-24 h-24 object-cover md:w-48 md:h-48 mt-10 mb-5"
+          />
+        ) : (
+          <div
+            className="flex-shrink-0 w-24 h-24 md:w-48 md:h-48 mt-10 mb-5 rounded-full bg-gray-700 flex items-center justify-center mx-auto"
+          >
+            <span className="text-5xl">👩‍💻</span>
+          </div>
+        )}
       </motion.div>
 
       <div className="space-y-5 md:space-y-10 px-0 md:px-10">
@@ -56,7 +67,7 @@ function About({ pageInfo }: Props) {
           Here is a little{" "}
           <span className="underline decoration-[#F7AB0A] decoration-wavy">
             background
-          </span>{" "}
+          </span>
         </h4>
         <p className="text-sm md:text-lg max-w-3xl">
           {text}
