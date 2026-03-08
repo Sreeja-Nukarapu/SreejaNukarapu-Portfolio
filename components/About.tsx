@@ -11,7 +11,9 @@ type Props = {
 
 function About({ pageInfo }: Props) {
   const [text, count] = useTypewriter({
-    words: [`${pageInfo?.backgroundInformation || "More about me coming soon..."}`],
+    words: [
+      `${pageInfo?.backgroundInformation || "More about me coming soon..."}`,
+    ],
     loop: 1,
     typeSpeed: 40,
   });
@@ -54,9 +56,7 @@ function About({ pageInfo }: Props) {
             className="flex-shrink-0 w-24 h-24 object-cover md:w-48 md:h-48 mt-10 mb-5"
           />
         ) : (
-          <div
-            className="flex-shrink-0 w-24 h-24 md:w-48 md:h-48 mt-10 mb-5 rounded-full bg-gray-700 flex items-center justify-center mx-auto"
-          >
+          <div className="flex-shrink-0 w-24 h-24 md:w-48 md:h-48 mt-10 mb-5 rounded-full bg-gray-700 flex items-center justify-center mx-auto">
             <span className="text-5xl">👩‍💻</span>
           </div>
         )}

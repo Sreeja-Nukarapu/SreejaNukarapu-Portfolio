@@ -12,10 +12,7 @@ type Props = {
 
 function Hero({ pageInfo }: Props) {
   const [text] = useTypewriter({
-    words: [
-      "Machine Learning Engineer",
-      "Data Analyst",
-    ],
+    words: ["Machine Learning Engineer", "Data Analyst"],
     loop: true,
     delaySpeed: 2500,
   });
@@ -28,7 +25,6 @@ function Hero({ pageInfo }: Props) {
 
   return (
     <div className="h-screen relative flex flex-col items-center justify-center text-center overflow-hidden w-full bg-white">
-
       {/* Profile Photo */}
       <motion.div
         initial={{ y: -80, opacity: 0 }}
@@ -99,8 +95,19 @@ function Hero({ pageInfo }: Props) {
           <Link href={resumeUrl} target="_blank">
             <button className="bg-black text-white px-8 py-4 rounded-full font-semibold text-sm tracking-wide flex items-center gap-2 hover:bg-white hover:text-black hover:border-2 hover:border-black transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
               Download CV
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
               </svg>
             </button>
           </Link>

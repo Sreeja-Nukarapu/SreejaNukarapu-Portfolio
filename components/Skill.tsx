@@ -16,7 +16,10 @@ function Skill({ skill, directionBottom }: Props) {
       whileHover={{ scale: 1.15, backgroundColor: "#000000" }}
       className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 cursor-pointer"
     >
-      <motion.span whileHover={{ color: "#ffffff" }} transition={{ duration: 0.2 }}>
+      <motion.span
+        whileHover={{ color: "#ffffff" }}
+        transition={{ duration: 0.2 }}
+      >
         {skill?.title}
       </motion.span>
     </motion.div>

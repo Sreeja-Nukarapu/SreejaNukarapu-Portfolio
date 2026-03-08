@@ -21,7 +21,6 @@ function WorkExperience({ experiences }: Props) {
 
       {/* Timeline */}
       <div className="relative w-full max-w-4xl mt-10">
-
         {/* Vertical line */}
         <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200" />
 
@@ -38,7 +37,9 @@ function WorkExperience({ experiences }: Props) {
               }`}
             >
               {/* Card */}
-              <div className={`w-5/12 ${isLeft ? "mr-auto pr-8" : "ml-auto pl-8"}`}>
+              <div
+                className={`w-5/12 ${isLeft ? "mr-auto pr-8" : "ml-auto pl-8"}`}
+              >
                 <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
                   <h4 className="text-lg font-bold text-black">
                     {experience?.company}
@@ -48,13 +49,19 @@ function WorkExperience({ experiences }: Props) {
                   </p>
                   <p className="text-gray-400 text-xs mt-3">
                     {experience?.dateStarted
-                      ? new Date(experience.dateStarted).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+                      ? new Date(experience.dateStarted).toLocaleDateString(
+                          "en-US",
+                          { month: "short", year: "numeric" },
+                        )
                       : ""}{" "}
                     -{" "}
                     {experience?.isCurrentlyWorkingHere
                       ? "Present"
                       : experience?.dateEnded
-                      ? new Date(experience.dateEnded).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+                      ? new Date(experience.dateEnded).toLocaleDateString(
+                          "en-US",
+                          { month: "short", year: "numeric" },
+                        )
                       : ""}
                   </p>
 
@@ -74,16 +81,26 @@ function WorkExperience({ experiences }: Props) {
               <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-black border-4 border-white shadow" />
 
               {/* Date on opposite side */}
-              <div className={`w-5/12 ${isLeft ? "ml-auto pl-8" : "mr-auto pr-8"} text-center`}>
+              <div
+                className={`w-5/12 ${
+                  isLeft ? "ml-auto pl-8" : "mr-auto pr-8"
+                } text-center`}
+              >
                 <p className="text-gray-400 text-sm font-medium">
                   {experience?.dateStarted
-                    ? new Date(experience.dateStarted).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+                    ? new Date(experience.dateStarted).toLocaleDateString(
+                        "en-US",
+                        { month: "short", year: "numeric" },
+                      )
                     : ""}{" "}
                   -{" "}
                   {experience?.isCurrentlyWorkingHere
                     ? "Present"
                     : experience?.dateEnded
-                    ? new Date(experience.dateEnded).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+                    ? new Date(experience.dateEnded).toLocaleDateString(
+                        "en-US",
+                        { month: "short", year: "numeric" },
+                      )
                     : ""}
                 </p>
               </div>
