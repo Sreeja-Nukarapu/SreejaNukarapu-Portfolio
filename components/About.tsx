@@ -25,7 +25,6 @@ function About({ pageInfo }: Props) {
       </h3>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 w-full items-center">
-
         {/* LEFT — Photo + status */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -70,7 +69,10 @@ function About({ pageInfo }: Props) {
                 "Exploring LLM agent frameworks",
                 "Open to SWE & ML Engineer roles",
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-xs text-gray-600">
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-xs text-gray-600"
+                >
                   <span className="text-burgundy mt-0.5">→</span>
                   {item}
                 </li>
@@ -104,32 +106,45 @@ function About({ pageInfo }: Props) {
           {/* Bio paragraphs */}
           <div className="space-y-3 text-gray-500 text-sm leading-relaxed">
             <p>
-              I&apos;m a CS grad student at NC State, working at the intersection of
-              machine learning research and full-stack engineering. My work spans
-              training GANs for medical image synthesis to deploying production RAG
-              pipelines that serve real users — I care deeply about systems that
-              actually work outside of notebooks.
+              I&apos;m a CS grad student at NC State, working at the
+              intersection of machine learning research and full-stack
+              engineering. My work spans training GANs for medical image
+              synthesis to deploying production RAG pipelines that serve real
+              users — I care deeply about systems that actually work outside of
+              notebooks.
             </p>
             <p>
-              I&apos;ve published four peer-reviewed papers across Springer and IEEE,
-              hold an AWS ML Engineer certification, and have experience across the
-              entire stack — data pipelines, model training, GPU optimization, and
-              API deployment.
+              I&apos;ve published four peer-reviewed papers across Springer and
+              IEEE, hold an AWS ML Engineer certification, and have experience
+              across the entire stack — data pipelines, model training, GPU
+              optimization, and API deployment.
             </p>
             <p>
-              When I&apos;m not at my desk, I&apos;m probably reading about diffusion models,
-              contributing to open-source, or figuring out why my CUDA kernel is
-              slower than expected.
+              When I&apos;m not at my desk, I&apos;m probably reading about
+              diffusion models, contributing to open-source, or figuring out why
+              my CUDA kernel is slower than expected.
             </p>
           </div>
 
           {/* Credentials — clean inline rows */}
           <div className="flex flex-col gap-2 pt-4 border-t border-gray-100">
             {[
-              { label: "MS CS, NC State", detail: "GPA 3.6 · Expected May 2026" },
-              { label: "B.Tech AI/ML, VNR", detail: "GPA 3.8 · Graduated with Distinction" },
-              { label: "AWS ML Engineer", detail: "Associate Certified · Sep 2025" },
-              { label: "NVIDIA DLI", detail: "Deep Learning Certified · Feb 2025" },
+              {
+                label: "MS CS, NC State",
+                detail: "GPA 3.6 · Expected May 2026",
+              },
+              {
+                label: "B.Tech AI/ML, VNR",
+                detail: "GPA 3.8 · Graduated with Distinction",
+              },
+              {
+                label: "AWS ML Engineer",
+                detail: "Associate Certified · Sep 2025",
+              },
+              {
+                label: "NVIDIA DLI",
+                detail: "Deep Learning Certified · Feb 2025",
+              },
             ].map(({ label, detail }, i) => (
               <motion.div
                 key={i}
@@ -144,7 +159,6 @@ function About({ pageInfo }: Props) {
             ))}
           </div>
         </motion.div>
-
       </div>
     </motion.div>
   );

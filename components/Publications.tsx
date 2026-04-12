@@ -47,8 +47,7 @@ const publicationsData: Publication[] = [
     ],
   },
   {
-    title:
-      "XLTransGAN: A Fusion of XLNet and GANs for Text-to-Image Synthesis",
+    title: "XLTransGAN: A Fusion of XLNet and GANs for Text-to-Image Synthesis",
     journal:
       "Innovations in Computational Intelligence and Computer Vision (ICICV 2024, Springer)",
     date: "Jan 1, 2025",
@@ -115,7 +114,12 @@ const publicationsData: Publication[] = [
     description:
       "ML-based refactoring advisor to detect and improve cloned software, enhancing code quality and maintainability.",
     link: "https://eudl.eu/doi/10.4108/eai.5-1-2024.2342581",
-    tags: ["Machine Learning", "Software Engineering", "Code Quality", "Clone Detection"],
+    tags: [
+      "Machine Learning",
+      "Software Engineering",
+      "Code Quality",
+      "Clone Detection",
+    ],
     previewImage: "/papers/refactoring-advisor.png",
     role: "Co-Author — ML Model Design, Feature Engineering, Experiments",
     contributions: [
@@ -207,9 +211,7 @@ function PublicationModal({
             />
             <div className="hidden flex-col items-center justify-center text-center p-8 gap-2">
               <span className="text-4xl">📄</span>
-              <p className="text-sm text-gray-400">
-                Paper preview coming soon
-              </p>
+              <p className="text-sm text-gray-400">Paper preview coming soon</p>
               <p className="text-xs text-gray-300">
                 Add screenshot to /public/papers/
               </p>
@@ -231,7 +233,10 @@ function PublicationModal({
               </h4>
               <ul className="space-y-2">
                 {pub.contributions.map((c, i) => (
-                  <li key={i} className="flex gap-2 text-xs text-gray-600 leading-relaxed">
+                  <li
+                    key={i}
+                    className="flex gap-2 text-xs text-gray-600 leading-relaxed"
+                  >
                     <span className="text-black mt-0.5 flex-shrink-0">→</span>
                     {c}
                   </li>
@@ -246,8 +251,13 @@ function PublicationModal({
               </h4>
               <ul className="space-y-2">
                 {pub.methodology.map((m, i) => (
-                  <li key={i} className="flex gap-2 text-xs text-gray-600 leading-relaxed">
-                    <span className="text-black mt-0.5 flex-shrink-0">{i + 1}.</span>
+                  <li
+                    key={i}
+                    className="flex gap-2 text-xs text-gray-600 leading-relaxed"
+                  >
+                    <span className="text-black mt-0.5 flex-shrink-0">
+                      {i + 1}.
+                    </span>
                     {m}
                   </li>
                 ))}
@@ -262,7 +272,10 @@ function PublicationModal({
             </h4>
             <div className="flex flex-col gap-2">
               {pub.keyResults.map((r, i) => (
-                <div key={i} className="flex gap-2 text-xs text-gray-600 leading-relaxed">
+                <div
+                  key={i}
+                  className="flex gap-2 text-xs text-gray-600 leading-relaxed"
+                >
                   <span className="text-green-500 flex-shrink-0">✓</span>
                   {r}
                 </div>

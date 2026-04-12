@@ -23,19 +23,38 @@ const skillCategories: SkillCategory[] = [
   {
     label: "ML Frameworks",
     icon: "🧠",
-    skills: ["PyTorch", "TensorFlow", "JAX", "Keras", "HuggingFace", "LangChain"],
+    skills: [
+      "PyTorch",
+      "TensorFlow",
+      "JAX",
+      "Keras",
+      "HuggingFace",
+      "LangChain",
+    ],
     accent: "#fce7f3",
   },
   {
     label: "Deep Learning",
     icon: "⚡",
-    skills: ["CNNs", "Transformers", "GANs", "LSTMs", "GNNs", "Diffusion Models"],
+    skills: [
+      "CNNs",
+      "Transformers",
+      "GANs",
+      "LSTMs",
+      "GNNs",
+      "Diffusion Models",
+    ],
     accent: "#fef9c3",
   },
   {
     label: "ML Domains",
     icon: "🔬",
-    skills: ["Computer Vision", "NLP", "Medical Imaging", "Time-Series Forecasting"],
+    skills: [
+      "Computer Vision",
+      "NLP",
+      "Medical Imaging",
+      "Time-Series Forecasting",
+    ],
     accent: "#dcfce7",
   },
   {
@@ -59,7 +78,13 @@ const skillCategories: SkillCategory[] = [
   {
     label: "Systems & Optimization",
     icon: "🚀",
-    skills: ["Distributed Training (DDP)", "GPU Profiling", "FP16 Mixed Precision", "OpenCV", "Git · Linux"],
+    skills: [
+      "Distributed Training (DDP)",
+      "GPU Profiling",
+      "FP16 Mixed Precision",
+      "OpenCV",
+      "Git · Linux",
+    ],
     accent: "#f1f5f9",
   },
 ];
@@ -111,7 +136,11 @@ function Skills({ skills }: Props) {
               {category.skills.map((skill, j) => (
                 <motion.span
                   key={j}
-                  whileHover={{ scale: 1.08, backgroundColor: "#000", color: "#fff" }}
+                  whileHover={{
+                    scale: 1.08,
+                    backgroundColor: "#000",
+                    color: "#fff",
+                  }}
                   transition={{ duration: 0.15 }}
                   className="px-3 py-1 bg-gray-50 border border-gray-200 text-gray-600 text-xs rounded-full font-medium cursor-default"
                 >
@@ -134,16 +163,21 @@ function Skills({ skills }: Props) {
           Also familiar with
         </p>
         <div className="flex flex-wrap justify-center gap-2">
-          {["Apache Spark", "Weights & Biases", "Seaborn", "Ruby on Rails", "JDBC", "Agile / Scrum"].map(
-            (skill, i) => (
-              <span
-                key={i}
-                className="px-3 py-1 border border-dashed border-gray-300 text-gray-400 text-xs rounded-full"
-              >
-                {skill}
-              </span>
-            )
-          )}
+          {[
+            "Apache Spark",
+            "Weights & Biases",
+            "Seaborn",
+            "Ruby on Rails",
+            "JDBC",
+            "Agile / Scrum",
+          ].map((skill, i) => (
+            <span
+              key={i}
+              className="px-3 py-1 border border-dashed border-gray-300 text-gray-400 text-xs rounded-full"
+            >
+              {skill}
+            </span>
+          ))}
         </div>
       </motion.div>
     </motion.div>

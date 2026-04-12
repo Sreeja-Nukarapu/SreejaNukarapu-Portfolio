@@ -13,7 +13,13 @@ type Props = {
 
 function Hero({ pageInfo }: Props) {
   const [text] = useTypewriter({
-    words: ["Software Engineer", "ML Engineer", "Deep Learning Researcher", "Full-Stack Developer", "AWS Certified ML Engineer"],
+    words: [
+      "Software Engineer",
+      "ML Engineer",
+      "Deep Learning Researcher",
+      "Full-Stack Developer",
+      "AWS Certified ML Engineer",
+    ],
     loop: true,
     delaySpeed: 2500,
   });
@@ -59,7 +65,9 @@ function Hero({ pageInfo }: Props) {
             <span className="text-5xl">👩‍💻</span>
           </div>
         )}
-        <span className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-burgundy flex items-center justify-center text-white text-xs font-bold shadow-md">✦</span>
+        <span className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-burgundy flex items-center justify-center text-white text-xs font-bold shadow-md">
+          ✦
+        </span>
       </motion.div>
 
       {/* Name */}
@@ -90,7 +98,8 @@ function Hero({ pageInfo }: Props) {
         transition={{ duration: 0.8, delay: 0.6 }}
         className="text-gray-400 text-sm md:text-base max-w-lg mx-auto py-1 tracking-wide"
       >
-        MS CS @ NC State &nbsp;·&nbsp; 4× Published Researcher &nbsp;·&nbsp; AWS Certified
+        MS CS @ NC State &nbsp;·&nbsp; 4× Published Researcher &nbsp;·&nbsp; AWS
+        Certified
       </motion.p>
 
       {/* Tagline */}
@@ -100,7 +109,8 @@ function Hero({ pageInfo }: Props) {
         transition={{ duration: 0.8, delay: 0.75 }}
         className="text-gray-600 text-base md:text-lg max-w-xl mx-auto py-2 leading-relaxed"
       >
-        Building production-grade ML systems at the intersection of deep learning, computer vision, and NLP.
+        Building production-grade ML systems at the intersection of deep
+        learning, computer vision, and NLP.
       </motion.p>
 
       {/* Download CV Button */}

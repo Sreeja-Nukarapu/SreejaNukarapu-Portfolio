@@ -58,11 +58,11 @@ function WorkExperience({ experiences }: Props) {
                     {experience?.isCurrentlyWorkingHere
                       ? "Present"
                       : experience?.dateEnded
-                      ? new Date(experience.dateEnded).toLocaleDateString(
-                          "en-US",
-                          { month: "short", year: "numeric" },
-                        )
-                      : ""}
+                        ? new Date(experience.dateEnded).toLocaleDateString(
+                            "en-US",
+                            { month: "short", year: "numeric" },
+                          )
+                        : ""}
                   </p>
 
                   {/* Points */}
@@ -97,11 +97,11 @@ function WorkExperience({ experiences }: Props) {
                   {experience?.isCurrentlyWorkingHere
                     ? "Present"
                     : experience?.dateEnded
-                    ? new Date(experience.dateEnded).toLocaleDateString(
-                        "en-US",
-                        { month: "short", year: "numeric" },
-                      )
-                    : ""}
+                      ? new Date(experience.dateEnded).toLocaleDateString(
+                          "en-US",
+                          { month: "short", year: "numeric" },
+                        )
+                      : ""}
                 </p>
               </div>
             </motion.div>
