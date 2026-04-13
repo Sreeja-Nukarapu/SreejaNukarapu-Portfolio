@@ -16,9 +16,6 @@ type ProjectItem = {
   tech: string[];
   category: "ML / AI" | "SWE / Backend" | "Full-Stack";
   github: string;
-  accent: string;
-  accentText: string;
-  index: number;
 };
 
 const projectData: ProjectItem[] = [
@@ -32,9 +29,6 @@ const projectData: ProjectItem[] = [
     tech: ["PyTorch", "CNN–LSTM", "CUDA", "DDP"],
     category: "ML / AI",
     github: "https://github.com/Sreeja-Nukarapu",
-    accent: "#6B2737",
-    accentText: "#F5EEE6",
-    index: 0,
   },
   {
     title: "Image Captioning Service",
@@ -46,9 +40,6 @@ const projectData: ProjectItem[] = [
     tech: ["PyTorch", "ResNet-50", "LSTM", "Gradio"],
     category: "ML / AI",
     github: "https://github.com/Sreeja-Nukarapu",
-    accent: "#3D2B4E",
-    accentText: "#F5EEE6",
-    index: 1,
   },
   {
     title: "Frost Event Prediction",
@@ -60,9 +51,6 @@ const projectData: ProjectItem[] = [
     tech: ["PyTorch", "LSTM", "GNN", "Time-Series"],
     category: "ML / AI",
     github: "https://github.com/Sreeja-Nukarapu",
-    accent: "#1E3A3A",
-    accentText: "#E8F5F5",
-    index: 2,
   },
   {
     title: "Driver Drowsiness Detection",
@@ -74,9 +62,6 @@ const projectData: ProjectItem[] = [
     tech: ["Python", "OpenCV", "dlib", "EAR"],
     category: "ML / AI",
     github: "https://github.com/Sreeja-Nukarapu",
-    accent: "#2C3E2D",
-    accentText: "#EAF4EA",
-    index: 3,
   },
   {
     title: "Expertiza — Open-Source Platform",
@@ -88,9 +73,6 @@ const projectData: ProjectItem[] = [
     tech: ["Ruby on Rails", "React", "Docker", "CI/CD"],
     category: "Full-Stack",
     github: "https://github.com/Sreeja-Nukarapu",
-    accent: "#2B3A4E",
-    accentText: "#E8EFF8",
-    index: 4,
   },
   {
     title: "WolfWR Wholesale Store",
@@ -102,14 +84,17 @@ const projectData: ProjectItem[] = [
     tech: ["MySQL", "Java", "JDBC", "Stored Procedures"],
     category: "SWE / Backend",
     github: "https://github.com/Sreeja-Nukarapu",
-    accent: "#3D3020",
-    accentText: "#F8F0E0",
-    index: 5,
   },
 ];
 
 const filters = ["All", "ML / AI", "Full-Stack", "SWE / Backend"] as const;
 type Filter = (typeof filters)[number];
+
+const categoryLabel: Record<string, string> = {
+  "ML / AI": "ML",
+  "Full-Stack": "FS",
+  "SWE / Backend": "SWE",
+};
 
 function Projects({ projects }: Props) {
   const [activeFilter, setActiveFilter] = useState<Filter>("All");
@@ -131,16 +116,16 @@ function Projects({ projects }: Props) {
         Projects
       </h3>
 
-      {/* Filter Tabs */}
-      <div className="flex gap-2 flex-wrap justify-center mb-10">
+      {/* Filter Tabs — consistent sizing, on-theme */}
+      <div className="flex gap-2 flex-wrap justify-center mb-10 mt-2">
         {filters.map((f) => (
           <button
             key={f}
             onClick={() => setActiveFilter(f)}
-            className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200 ${
+            className={`px-5 py-2 rounded-full text-xs font-semibold border transition-all duration-200 ${
               activeFilter === f
                 ? "bg-burgundy text-cream border-burgundy"
-                : "bg-white text-gray-500 border-gray-200 hover:border-burgundy hover:text-burgundy"
+                : "bg-white text-gray-500 border-burgundy-border hover:border-burgundy hover:text-burgundy"
             }`}
           >
             {f}
@@ -155,52 +140,29 @@ function Projects({ projects }: Props) {
             <motion.div
               key={project.title}
               layout
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.35, delay: i * 0.06 }}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col"
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.3, delay: i * 0.06 }}
+              whileHover={{ y: -3, boxShadow: "0 12px 32px rgba(107,39,55,0.08)" }}
+              className="bg-white border border-burgundy-border rounded-2xl overflow-hidden flex flex-col transition-all duration-300"
             >
-              {/* Colored header band */}
-              <div
-                className="relative px-5 pt-5 pb-4 flex items-start justify-between"
-                style={{ backgroundColor: project.accent }}
-              >
-                {/* Stat */}
+              {/* Card top — stat + category, on-theme */}
+              <div className="px-5 pt-5 pb-4 border-b border-burgundy-border flex items-end justify-between">
                 <div>
-                  <p
-                    className="text-3xl font-black leading-none"
-                    style={{ color: project.accentText }}
-                  >
+                  <p className="text-3xl font-black text-black leading-none">
                     {project.stat}
                   </p>
-                  <p
-                    className="text-xs mt-0.5 opacity-70"
-                    style={{ color: project.accentText }}
-                  >
+                  <p className="text-xs text-burgundy-muted mt-0.5 font-medium">
                     {project.statLabel}
                   </p>
                 </div>
-
-                {/* Category pill */}
-                <span
-                  className="text-xs font-semibold px-2.5 py-1 rounded-full border opacity-80"
-                  style={{
-                    color: project.accentText,
-                    borderColor: `${project.accentText}40`,
-                  }}
-                >
+                <span className="text-xs font-bold text-burgundy border border-burgundy-border bg-burgundy-light px-2.5 py-1 rounded-full">
                   {project.category}
                 </span>
-
-                {/* Decorative corner block — MINIM touch */}
-                <div
-                  className="absolute bottom-0 right-0 w-8 h-8 opacity-20 rounded-tl-xl"
-                  style={{ backgroundColor: project.accentText }}
-                />
               </div>
 
-              {/* Content */}
+              {/* Card body */}
               <div className="flex flex-col flex-1 p-5 gap-3">
                 <div>
                   <h4 className="text-sm font-bold text-gray-900 leading-snug">
@@ -220,7 +182,7 @@ function Projects({ projects }: Props) {
                   {project.tech.map((t, j) => (
                     <span
                       key={j}
-                      className="px-2 py-0.5 bg-gray-100 text-gray-500 text-xs rounded-full"
+                      className="px-2 py-0.5 bg-burgundy-light text-burgundy text-xs rounded-full font-medium"
                     >
                       {t}
                     </span>
@@ -231,14 +193,9 @@ function Projects({ projects }: Props) {
                 <Link
                   href={project.github}
                   target="_blank"
-                  className="flex items-center gap-1.5 text-xs font-semibold mt-1 w-fit"
-                  style={{ color: project.accent }}
+                  className="flex items-center gap-1.5 text-xs font-semibold text-burgundy hover:opacity-70 transition-opacity duration-200 mt-1 w-fit"
                 >
-                  <svg
-                    className="w-3.5 h-3.5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                   </svg>
                   View on GitHub →

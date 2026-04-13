@@ -4,82 +4,78 @@ type Props = {
   size?: number;
 };
 
-export default function Logo({ size = 52 }: Props) {
-  // Maintain aspect ratio: viewBox is 110 x 72
-  const width = size * (110 / 72);
-  const height = size;
+export default function Logo({ size = 48 }: Props) {
+  const scale = size / 48;
 
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 110 72"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      style={{
+        display: "inline-flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        transform: `scale(${scale})`,
+        transformOrigin: "top left",
+      }}
     >
-      {/* Outer thin frame */}
-      <rect
-        x="1"
-        y="1"
-        width="108"
-        height="58"
-        rx="1"
-        fill="none"
-        stroke="#6B2737"
-        strokeWidth="0.8"
+      {/* Letters row */}
+      <div style={{ display: "flex", alignItems: "flex-end", lineHeight: 1 }}>
+        {/* S — dominant, large */}
+        <span
+          style={{
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            fontSize: "44px",
+            fontWeight: 300,
+            color: "#6B2737",
+            lineHeight: 1,
+            letterSpacing: "-2px",
+          }}
+        >
+          S
+        </span>
+
+        {/* N — smaller, sits at mid-height of S */}
+        <span
+          style={{
+            fontFamily: "Georgia, 'Times New Roman', serif",
+            fontSize: "26px",
+            fontWeight: 300,
+            color: "#6B2737",
+            opacity: 0.55,
+            lineHeight: 1,
+            marginBottom: "7px",
+            marginLeft: "1px",
+          }}
+        >
+          N
+        </span>
+      </div>
+
+      {/* Hairline rule */}
+      <div
+        style={{
+          width: "100%",
+          height: "0.7px",
+          backgroundColor: "#6B2737",
+          opacity: 0.3,
+          marginTop: "3px",
+          marginBottom: "4px",
+        }}
       />
 
-      {/* S — large, filled, thin serif weight */}
-      <text
-        x="12"
-        y="50"
-        fontFamily="Georgia, 'Times New Roman', serif"
-        fontSize="52"
-        fontWeight="300"
-        fill="#6B2737"
-      >
-        S
-      </text>
-
-      {/* N — large, outline only, overlapping with S */}
-      <text
-        x="46"
-        y="50"
-        fontFamily="Georgia, 'Times New Roman', serif"
-        fontSize="52"
-        fontWeight="300"
-        fill="none"
-        stroke="#6B2737"
-        strokeWidth="1.2"
-      >
-        N
-      </text>
-
-      {/* Thin rule separating monogram from name */}
-      <line
-        x1="1"
-        y1="62"
-        x2="109"
-        y2="62"
-        stroke="#6B2737"
-        strokeWidth="0.5"
-        opacity="0.5"
-      />
-
-      {/* Full name — tiny spaced caps */}
-      <text
-        x="55"
-        y="70"
-        fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-        fontSize="6"
-        fontWeight="400"
-        fill="#6B2737"
-        letterSpacing="3"
-        textAnchor="middle"
-        opacity="0.8"
+      {/* Name — tiny tracked caps */}
+      <span
+        style={{
+          fontFamily: "Jost, -apple-system, sans-serif",
+          fontSize: "5.5px",
+          fontWeight: 500,
+          color: "#6B2737",
+          letterSpacing: "3.5px",
+          opacity: 0.55,
+          whiteSpace: "nowrap",
+        }}
       >
         SREEJA NUKARAPU
-      </text>
-    </svg>
+      </span>
+    </div>
   );
 }

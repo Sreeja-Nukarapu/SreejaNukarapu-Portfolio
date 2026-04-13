@@ -81,7 +81,7 @@ function EduCard({ edu, i }: { edu: EduItem; i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: i * 0.1 }}
       whileHover={{ scale: 1.02 }}
-      className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+      className="bg-white border border-burgundy-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
     >
       <div className="flex items-start gap-3 mb-3">
         {edu.badge ? (

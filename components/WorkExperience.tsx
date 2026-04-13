@@ -40,7 +40,7 @@ function WorkExperience({ experiences }: Props) {
               <div
                 className={`w-5/12 ${isLeft ? "mr-auto pr-8" : "ml-auto pl-8"}`}
               >
-                <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="bg-white border border-burgundy-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
                   <h4 className="text-lg font-bold text-black">
                     {experience?.company}
                   </h4>
