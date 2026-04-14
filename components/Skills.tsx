@@ -116,7 +116,7 @@ function Skills({ skills }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: i * 0.07 }}
             whileHover={{ y: -4, boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}
-            className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm transition-all duration-300"
+            className="bg-white border border-burgundy-border rounded-2xl p-5 shadow-sm transition-all duration-300"
           >
             {/* Category Header */}
             <div className="flex items-center gap-2 mb-4">

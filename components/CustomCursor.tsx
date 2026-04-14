@@ -46,20 +46,30 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Dot — exact position */}
+      {/* Star — exact position */}
       <motion.div
         style={{
           x: mouseX,
           y: mouseY,
           translateX: "-50%",
           translateY: "-50%",
+          fontSize: "16px",
+          lineHeight: 1,
+          color: "#6B2737",
+          filter: "drop-shadow(0 0 3px rgba(107,39,55,0.3))",
         }}
-        animate={{ scale: hovering ? 0 : 1, opacity: hovering ? 0 : 1 }}
-        transition={{ duration: 0.15 }}
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-burgundy pointer-events-none z-[9999]"
-      />
+        animate={{
+          scale: hovering ? 1.6 : 1,
+          rotate: hovering ? 20 : 0,
+          opacity: hovering ? 0.9 : 1,
+        }}
+        transition={{ duration: 0.2 }}
+        className="fixed top-0 left-0 pointer-events-none z-[9999] select-none"
+      >
+        ✦
+      </motion.div>
 
-      {/* Ring — spring follow */}
+      {/* Trailing ring — spring follow */}
       <motion.div
         style={{
           x: ringX,
@@ -68,14 +78,13 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          width: hovering ? 44 : 28,
-          height: hovering ? 44 : 28,
-          backgroundColor: hovering ? "rgba(107,39,55,0.12)" : "transparent",
-          borderColor: hovering ? "#6B2737" : "#6B2737",
-          opacity: hovering ? 1 : 0.5,
+          width: hovering ? 48 : 32,
+          height: hovering ? 48 : 32,
+          backgroundColor: hovering ? "rgba(107,39,55,0.08)" : "transparent",
+          opacity: hovering ? 1 : 0.45,
         }}
         transition={{ duration: 0.2 }}
-        className="fixed top-0 left-0 rounded-full border border-burgundy pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 rounded-full border border-burgundy pointer-events-none z-[9998]"
       />
     </>
   );

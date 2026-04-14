@@ -321,7 +321,7 @@ function Publications() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -2, boxShadow: "0 8px 30px rgba(0,0,0,0.07)" }}
-              className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm transition-all duration-300"
+              className="bg-white border border-burgundy-border rounded-2xl p-6 shadow-sm transition-all duration-300"
             >
               <div className="flex-1">
                 <h4 className="text-base font-bold text-black mb-1">
@@ -342,22 +342,22 @@ function Publications() {
                   ))}
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex flex-wrap gap-3">
+                {/* Action Buttons — More Details first, View Publication right-aligned */}
+                <div className="flex items-center justify-between gap-3 w-full">
+                  <button
+                    onClick={() => setSelected(pub)}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-burgundy border border-burgundy px-4 py-2 rounded-full hover:bg-burgundy hover:text-white transition-all duration-200"
+                  >
+                    More Details ↗
+                  </button>
                   <a
                     href={pub.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-black border border-black px-4 py-2 rounded-full hover:bg-black hover:text-white transition-all duration-200"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500 border border-gray-200 px-4 py-2 rounded-full hover:border-gray-400 hover:text-gray-700 transition-all duration-200"
                   >
                     View Publication →
                   </a>
-                  <button
-                    onClick={() => setSelected(pub)}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 border border-gray-300 px-4 py-2 rounded-full hover:border-black hover:text-black transition-all duration-200"
-                  >
-                    More Details ↗
-                  </button>
                 </div>
               </div>
             </motion.div>

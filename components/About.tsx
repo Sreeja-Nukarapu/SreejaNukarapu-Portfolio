@@ -39,13 +39,16 @@ function About({ pageInfo }: Props) {
               <Image
                 src={profilePicUrl}
                 alt="Sreeja Nukarapu"
-                width={240}
-                height={240}
-                className="relative rounded-2xl object-cover shadow-md border border-white"
+                width={360}
+                height={420}
+                className="relative rounded-2xl object-cover object-top shadow-md border border-white"
               />
             ) : (
-              <div className="relative w-56 h-56 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center shadow-md border border-white">
-                <span className="text-7xl">👩‍💻</span>
+              <div
+                className="relative rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center shadow-md border border-white"
+                style={{ width: "320px", height: "380px" }}
+              >
+                <span style={{ fontSize: "130px" }}>👩‍💻</span>
               </div>
             )}
             <div className="absolute -bottom-3 -right-3 bg-black text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow">

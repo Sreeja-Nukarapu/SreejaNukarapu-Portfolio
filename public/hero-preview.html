@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Jost', sans-serif; background: #e8e0d8; display: flex; flex-direction: column; gap: 24px; padding: 24px; }
+    .label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #999; margin-bottom: 8px; }
+
+    /* ─── OPTION A: Split Layout ─── */
+    .option-a {
+      width: 100%; height: 540px;
+      background: #F5EEE6;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .option-a .left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 60px 48px 60px 64px;
+      gap: 16px;
+    }
+    .option-a .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: #6B2737; opacity: 0.7;
+    }
+    .option-a .tag::before { content: ''; width: 20px; height: 1px; background: #6B2737; opacity: 0.5; }
+    .option-a h1 {
+      font-family: Georgia, serif;
+      font-size: 52px; font-weight: 300;
+      color: #1a1a1a; line-height: 1.05;
+      letter-spacing: -1px;
+    }
+    .option-a h1 span { color: #6B2737; }
+    .option-a .typewriter {
+      font-size: 14px; font-weight: 600;
+      color: #6B2737; letter-spacing: 1px;
+      border-left: 2px solid #6B2737;
+      padding-left: 10px;
+    }
+    .option-a .desc {
+      font-size: 13px; color: #888; line-height: 1.7;
+      max-width: 340px; font-weight: 400;
+    }
+    .option-a .btns { display: flex; gap: 10px; margin-top: 8px; }
+    .option-a .btn-primary {
+      background: #6B2737; color: #F5EEE6;
+      border: none; padding: 12px 24px;
+      border-radius: 100px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.5px; cursor: pointer;
+      font-family: 'Jost', sans-serif;
+    }
+    .option-a .btn-secondary {
+      background: transparent; color: #6B2737;
+      border: 1px solid #DDB8C0; padding: 12px 24px;
+      border-radius: 100px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.5px; cursor: pointer;
+      font-family: 'Jost', sans-serif;
+    }
+    .option-a .socials { display: flex; gap: 12px; margin-top: 4px; }
+    .option-a .social-link {
+      font-size: 10px; font-weight: 600; color: #6B2737;
+      opacity: 0.55; letter-spacing: 1px; text-decoration: none;
+      text-transform: uppercase;
+    }
+    .option-a .right {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .option-a .photo-wrap {
+      position: relative; width: 300px; height: 360px;
+    }
+    .option-a .photo-bg {
+      position: absolute; bottom: -12px; right: -12px;
+      width: 300px; height: 360px;
+      background: #DDB8C0; opacity: 0.3; border-radius: 12px;
+    }
+    .option-a .photo {
+      position: relative; z-index: 1;
+      width: 300px; height: 360px;
+      background: linear-gradient(135deg, #c9b0b5 0%, #9b7a82 100%);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 64px;
+    }
+    .option-a .badge {
+      position: absolute; top: 16px; left: -16px; z-index: 2;
+      background: white; border: 1px solid #DDB8C0;
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 10px; font-weight: 600; color: #6B2737;
+      box-shadow: 0 4px 16px rgba(107,39,55,0.1);
+      white-space: nowrap;
+    }
+    .option-a .stat-card {
+      position: absolute; bottom: 24px; left: -24px; z-index: 2;
+      background: white; border: 1px solid #DDB8C0;
+      border-radius: 16px; padding: 12px 18px;
+      box-shadow: 0 4px 20px rgba(107,39,55,0.08);
+    }
+    .option-a .stat-card .num { font-size: 22px; font-weight: 800; color: #6B2737; line-height: 1; }
+    .option-a .stat-card .lbl { font-size: 9px; color: #aaa; font-weight: 500; margin-top: 2px; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Decorative elements */
+    .option-a .deco-top { position: absolute; top: 32px; right: 32px; display: flex; flex-direction: column; gap: 4px; }
+    .option-a .deco-line { background: #6B2737; height: 1px; opacity: 0.4; }
+    .scroll-hint {
+      position: absolute; bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .scroll-hint span { font-size: 8px; letter-spacing: 2px; color: #aaa; text-transform: uppercase; font-weight: 500; }
+    .scroll-hint .line { width: 1px; height: 28px; background: #6B2737; opacity: 0.25; }
+
+    /* ─── OPTION B: Centered improved ─── */
+    .option-b {
+      width: 100%; height: 540px;
+      background: #F5EEE6;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; overflow: hidden; gap: 12px;
+      text-align: center;
+    }
+    .option-b .deco-tl { position: absolute; top: 28px; left: 28px; display: flex; flex-direction: column; gap: 4px; }
+    .option-b .deco-br { position: absolute; bottom: 28px; right: 28px; display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+    .option-b .deco-ln { height: 1px; background: #6B2737; opacity: 0.35; }
+    .option-b .photo-ring {
+      width: 130px; height: 130px; border-radius: 50%;
+      background: linear-gradient(135deg, #c9b0b5, #9b7a82);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px;
+      border: 1px solid #DDB8C0;
+      box-shadow: 0 8px 32px rgba(107,39,55,0.12);
+      position: relative;
+    }
+    .option-b .photo-badge {
+      position: absolute; bottom: -2px; right: -2px;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: #6B2737; color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+    }
+    .option-b h1 { font-size: 40px; font-weight: 700; color: #1a1a1a; letter-spacing: -1px; line-height: 1; }
+    .option-b .typewriter {
+      font-size: 15px; font-weight: 600; color: #6B2737; letter-spacing: 0.5px;
+    }
+    .option-b .status {
+      font-size: 11px; color: #bbb; letter-spacing: 1.5px; font-weight: 400;
+    }
+    .option-b .desc { font-size: 13px; color: #888; max-width: 480px; line-height: 1.7; }
+    .option-b .btns { display: flex; gap: 10px; margin-top: 4px; }
+    .option-b .btn-p { background: #6B2737; color: #F5EEE6; border: none; padding: 11px 22px; border-radius: 100px; font-size: 12px; font-weight: 600; font-family: 'Jost', sans-serif; }
+    .option-b .btn-s { background: transparent; color: #6B2737; border: 1px solid #DDB8C0; padding: 11px 22px; border-radius: 100px; font-size: 12px; font-weight: 600; font-family: 'Jost', sans-serif; }
+    .option-b .soc { display: flex; gap: 16px; }
+    .option-b .soc a { font-size: 9px; font-weight: 600; color: #6B2737; opacity: 0.5; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; }
+    .option-b .scroll-b { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .option-b .scroll-b span { font-size: 7px; letter-spacing: 2px; color: #bbb; text-transform: uppercase; }
+    .option-b .scroll-b .ln { width: 1px; height: 24px; background: #6B2737; opacity: 0.2; }
+  </style>
+</head>
+<body>
+
+  <div class="label">Option A — Split Layout (Recommended)</div>
+  <div class="option-a">
+    <div class="deco-top">
+      <div class="deco-line" style="width:32px"></div>
+      <div class="deco-line" style="width:16px"></div>
+    </div>
+
+    <div class="left">
+      <div class="tag">ML Engineer · Software Engineer</div>
+      <h1>Sreeja<br/><span>Nukarapu.</span></h1>
+      <div class="typewriter">▍Deep Learning Researcher</div>
+      <p class="desc">Building production-grade ML systems at the intersection of deep learning, computer vision, and NLP.</p>
+      <div class="btns">
+        <button class="btn-primary">View My Work →</button>
+        <button class="btn-secondary">Get In Touch</button>
+      </div>
+      <div class="socials">
+        <a href="#" class="social-link">GitHub</a>
+        <a href="#" class="social-link">LinkedIn</a>
+        <a href="#" class="social-link">Resume</a>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="photo-wrap">
+        <div class="photo-bg"></div>
+        <div class="photo">👩‍💻</div>
+        <div class="badge">✦ Open to work</div>
+        <div class="stat-card">
+          <div class="num">4×</div>
+          <div class="lbl">Published</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="line"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+
+  <div class="label">Option B — Centered Improved (Less change)</div>
+  <div class="option-b">
+    <div class="deco-tl">
+      <div class="deco-ln" style="width:28px"></div>
+      <div class="deco-ln" style="width:14px"></div>
+    </div>
+    <div class="deco-br">
+      <div class="deco-ln" style="width:28px"></div>
+      <div class="deco-ln" style="width:14px"></div>
+    </div>
+
+    <div class="photo-ring">
+      👩‍💻
+      <div class="photo-badge">✦</div>
+    </div>
+    <h1>Sreeja Nukarapu</h1>
+    <div class="typewriter">▍Software Engineer</div>
+    <div class="status">MS CS @ NC State &nbsp;·&nbsp; 4× Published &nbsp;·&nbsp; AWS Certified</div>
+    <p class="desc">Building production-grade ML systems at the intersection of deep learning, computer vision, and NLP.</p>
+    <div class="btns">
+      <button class="btn-p">View My Work →</button>
+      <button class="btn-s">Get In Touch</button>
+    </div>
+    <div class="soc">
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume</a>
+    </div>
+
+    <div class="scroll-b">
+      <div class="ln"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+
+</body>
+</html>
