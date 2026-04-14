@@ -18,21 +18,19 @@ function About({ pageInfo }: Props) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.2, ease: "easeInOut" }}
-      className="relative flex flex-col min-h-screen justify-center mx-auto items-center px-6 md:px-20 py-24 max-w-5xl w-full"
+      className="relative flex flex-col min-h-screen justify-center mx-auto items-center px-6 md:px-20 py-24 max-w-6xl w-full"
     >
-      <h3 className="absolute top-16 text-2xl font-bold tracking-[10px] text-burgundy uppercase">
-        About
-      </h3>
+      {/* ── Split: photo left, bio right ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 w-full items-start">
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 w-full items-center">
-        {/* LEFT — Photo + status */}
+        {/* LEFT — Photo + Currently */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           className="flex flex-col items-center lg:items-start gap-6"
         >
-          {/* Photo with decorative ring */}
+          {/* Photo */}
           <div className="relative">
             <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-burgundy-border via-burgundy-light to-transparent opacity-60" />
             {profilePicUrl ? (
@@ -72,10 +70,7 @@ function About({ pageInfo }: Props) {
                 "Exploring LLM agent frameworks",
                 "Open to SWE & ML Engineer roles",
               ].map((item, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-2 text-xs text-gray-600"
-                >
+                <li key={i} className="flex items-start gap-2 text-xs text-gray-600">
                   <span className="text-burgundy mt-0.5">→</span>
                   {item}
                 </li>
@@ -84,21 +79,23 @@ function About({ pageInfo }: Props) {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT — Bio */}
+        {/* RIGHT — Bio + Credentials */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
           className="flex flex-col gap-7"
         >
-          {/* Heading with highlights */}
+          {/* ABOUT label + headline */}
           <div>
-            <h4 className="text-2xl md:text-3xl font-bold text-black leading-snug">
+            <h3 className="text-2xl font-bold tracking-[10px] text-burgundy uppercase mb-4">
+              About
+            </h3>
+            <h4 className="text-3xl md:text-4xl font-bold text-black leading-snug">
               I build things that{" "}
               <span className="underline decoration-wavy decoration-burgundy underline-offset-4">
                 learn,
               </span>{" "}
-              <br />
               and things that{" "}
               <span className="underline decoration-wavy decoration-burgundy underline-offset-4">
                 ship.
@@ -129,25 +126,13 @@ function About({ pageInfo }: Props) {
             </p>
           </div>
 
-          {/* Credentials — clean inline rows */}
+          {/* Credentials */}
           <div className="flex flex-col gap-2 pt-4 border-t border-gray-100">
             {[
-              {
-                label: "MS CS, NC State",
-                detail: "GPA 3.6 · Expected May 2026",
-              },
-              {
-                label: "B.Tech AI/ML, VNR",
-                detail: "GPA 3.8 · Graduated with Distinction",
-              },
-              {
-                label: "AWS ML Engineer",
-                detail: "Associate Certified · Sep 2025",
-              },
-              {
-                label: "NVIDIA DLI",
-                detail: "Deep Learning Certified · Feb 2025",
-              },
+              { label: "MS CS, NC State",    detail: "GPA 3.6 · Expected May 2026" },
+              { label: "B.Tech AI/ML, VNR",  detail: "GPA 3.8 · Graduated with Distinction" },
+              { label: "AWS ML Engineer",    detail: "Associate Certified · Sep 2025" },
+              { label: "NVIDIA DLI",         detail: "Deep Learning Certified · Feb 2025" },
             ].map(({ label, detail }, i) => (
               <motion.div
                 key={i}
